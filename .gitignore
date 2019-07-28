@@ -1,2 +1,5 @@
 gitenv.sh
 amdgpu-pro-*
+*.swp
+t-rex/
+start*

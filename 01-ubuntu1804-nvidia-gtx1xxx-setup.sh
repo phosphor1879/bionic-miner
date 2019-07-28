@@ -11,6 +11,6 @@ sudo apt upgrade
 
 sudo apt install xterm nvidia-390 -y
 
-sudo nvidia-xconfig
+sudo nvidia-xconfig --cool-bits 4
 
 echo "you should reboot and make sure nvidia-smi is working and then run part 2"

@@ -1,8 +1,14 @@
 set -euxo pipefail
 sudo sed -i s/GRUB_TIMEOUT=0/GRUB_TIMEOUT=2/g /etc/default/grub
 sudo update-grub
+
+wget -qO - http://repo.radeon.com/rocm/apt/debian/rocm.gpg.key | sudo apt-key add -
+echo 'deb [arch=amd64] http://repo.radeon.com/rocm/apt/debian/ xenial main' | sudo tee /etc/apt/sources.list.d/rocm.list
+
 sudo apt update
 sudo apt upgrade
+
+
 sudo apt install ocl-icd-opencl-dev clinfo rocm-smi xterm -y
 # Notes:
 # https://gist.github.com/9bitbear/ed22baac9b59ae53bbee74ab9bff7150
@@ -25,7 +31,7 @@ cat <<EOF > start.sh
 
 while true
 do
-$PWD/wildrig/wildrig-multi --algo x16r --opencl-threads auto --opencl-launch auto --url stratum+tcp://stratum.icemining.ca:3648 --user FPMz6eFy4fYn5B4y85GR52LWRjKXbavRde --pass c=PHL
+$PWD/wildrig/wildrig-multi --algo x16r --opencl-threads auto --opencl-launch auto --url stratum+tcp://stratum.icemining.ca:3648 --user FPMz6eFy4fYn5B4y85GR52LWRjKXbavRde.$HOSTNAME --pass c=PHL
 sleep 5
 done
 EOF

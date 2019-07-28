@@ -5,6 +5,11 @@ wget https://github.com/trexminer/T-Rex/releases/download/0.12.1/t-rex-0.12.1-li
 mkdir t-rex
 tar -zxvf t-rex-0.12.1-linux-cuda9.1.tar.gz -C t-rex
 
+# You will want to powerlimit...
+# sudo nvidia-smi -i 0 -pl 190
+# sudo visudo
+# username     ALL=(ALL) NOPASSWD:ALL
+
 cat <<EOF > start.sh
 #!/bin/bash
 
